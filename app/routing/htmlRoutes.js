@@ -1,22 +1,23 @@
 // A GET Route to /survey which should display the survey page.
 // A default, catch-all route that leads to home.html which displays the home page.
+var path = require('path');
 
 
-var routes = function(app) {
+module.exports = function(app) {
 
-// Routes
-// =============================================================
+	// Basic route that sends the user first to the AJAX Page
+	app.get("/", function(req, res) {
 
-// Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/home.html"));
-});
+	    res.sendFile(path.join(__dirname, "../public/home.html"));
 
-app.get("/survey", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/survey.html"));
-});
+	});
+
+	app.get("/survey", function(req, res) {
+
+	    res.sendFile(path.join(__dirname, "../public/survey.html"));
+
+	});
 
 
-}
+};
 
-module.exports = routes;

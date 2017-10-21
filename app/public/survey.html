@@ -82,6 +82,8 @@
 
     $("#submit").on("click", function(event) {
 
+    	event.preventDefault();
+
     	// NAME ==========================================
     	if ($("#name").val() === "") {
     		// console.log("name blank");
@@ -131,14 +133,19 @@
     		name: $("#name").val().trim(),
     		photo: $("#photo").val().trim(),
     		score: answerArr
-    	}
+    	};
 
     	console.log(personObject);
 
 
-        event.preventDefault();
+	     
+		$.post("/api/friends", personObject).done(function(data) {
 
-        // console.log("you clicked submit");
+			console.log(data);
+
+		});
+
+
 
 
 
