@@ -67,31 +67,48 @@
 
   <script type="text/javascript">
 
+  	var answerArr = [];
+
     $("#submit").on("click", function(event) {
 
-    	// if ($("#name").val() === "") {
-    	// 	console.log("name blank");
-    	// 	// prevent submit from going
-    	// }
+    	// NAME ==========================================
+    	if ($("#name").val() === "") {
+    		console.log("name blank");
+    		// prevent submit from going
+    	} else {
+    		name = $("#name").val().trim();
+    		console.log("Name: " + name);
+    	}
+    	// PHOTO ==========================================
+    	if ($("#photo").val() === "") {
+    		console.log("photo blank");
+    		// prevent submit from going
+    	} else {
+    		photo = $("#photo").val().trim();
+    		console.log("Photo: " + photo);
+    	}
 
-    	// if ($("#photo").val() === "") {
-    	// 	console.log("photo blank");
-    	// 	// prevent submit from going
-    	// }
 
 
+
+
+		// QUESTION 1 =======================================================
     	if (!$("input:radio[name='options1']").is(":checked")) {
     		console.log("please answer question 1");
     	} else {
     		var q1num = $('input[name=options1]:checked').val();
     		console.log("Question 1 Value: " + q1num);
+    		answerArr.push(q1num);
+    		console.log(answerArr);
     	}
-
+    	// QUESTION 2 =======================================================
     	if (!$("input:radio[name='options2']").is(":checked")) {
     		console.log("please answer question 2");
     	} else {
-    		var q1num = $('input[name=options2]:checked').val();
-    		console.log("Question 2 Value: " + q1num);
+    		var q2num = $('input[name=options2]:checked').val();
+    		console.log("Question 2 Value: " + q2num);
+    		answerArr.push(q2num);
+    		console.log(answerArr);
     	}    	
 
 
