@@ -15,8 +15,19 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="../style.css">
+	<!-- CSS LINK NOT WORKING  ================================================================================--> 
+	<!-- <link rel="stylesheet" type="text/css" href="./app/style.css"> -->
+
+	<style>
+		.radbutton {
+		    padding: 10px 20px;
+		    font-size: 20px;
+		    border-radius: 10px;
+		    width: 100px;
+		    height: 50px;
+		}
+	</style>
+
 
 </head>
 <body>
@@ -97,7 +108,7 @@
 
     		if ($("input[name=options" + i + "]:checked").val() == null) {
 
-    			console.log("Survey NOT complete");
+    			console.log("Survey NOT complete *************************************");
     			console.log("Please answer question " + i);
 
     		} else {
@@ -116,33 +127,13 @@
     	}
 
 
+    	var personObject = {
+    		name: $("#name").val().trim(),
+    		photo: $("#photo").val().trim(),
+    		score: answerArr
+    	}
 
-		// // QUESTION 1 =======================================================
-  //   	if (!$("input:radio[name='options1']").is(":checked")) {
-  //   		console.log("please answer question 1");
-  //   	} else {
-  //   		var q1 = $('input[name=options1]:checked').val();
-  //   		console.log("Question 1 Value: " + q1);
-  //   		answerArr.push(q1);
-  //   		console.log(answerArr);
-  //   	}
-
-  //   	// QUESTION 2 =======================================================
-  //   	if (!$("input:radio[name='options2']").is(":checked")) {
-  //   		console.log("please answer question 2");
-  //   	} else {
-  //   		var q2num = $('input[name=options2]:checked').val();
-  //   		console.log("Question 2 Value: " + q2num);
-  //   		answerArr.push(q2num);
-  //   		console.log(answerArr);
-  //   	}    	
-
-
-
-
-
-
-
+    	console.log(personObject);
 
 
         event.preventDefault();
