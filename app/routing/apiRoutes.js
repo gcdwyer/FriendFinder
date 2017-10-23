@@ -13,9 +13,37 @@ module.exports = function(app) {
 
 	app.post("/api/friends", function(req, res) {
 
-	  console.log(req.body);
+		// Displays at terminal log
+		console.log(req.body);
+	    console.log(req.body.name);
 
-	  // Handles incoming survey results and logic
+	    // console.log("friend 1 score: " + friends[0].scores[0]);
+
+	    var difference = 0;
+
+	    // loops through all friends
+	    for (var i = 0; i < friends.length; i++) {
+
+	    	// console.log(friends[i]);
+
+	    	// loops through each objects score
+	    	for (var j = 0; j < 10; j++) {
+
+	    		// console.log(friends[i].scores[j]);
+
+	    		// console.log(req.body);
+	    		// console.log(req.body.score);
+	    		// console.log(req.body.score[j]);
+
+	    		// difference = Math.abs(friends[i].scores[j] - req.body.scores[j]);
+
+	    		// console.log("Difference: " + difference);
+
+	    	}
+
+
+
+	    }
 
 	});
 
