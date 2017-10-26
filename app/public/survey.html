@@ -199,12 +199,25 @@
     		}
 
 			var personObject = {
-	    		namesss: $("#name").val().trim(),
+	    		name: $("#name").val().trim(),
 	    		photo: $("#photo").val().trim(),
-	    		scores: answerArr
+	    		scores: [
+	    			$("input[name=options1]:checked").val(),
+	    			$("input[name=options2]:checked").val(),
+	    			$("input[name=options3]:checked").val(),
+	    			$("input[name=options4]:checked").val(),
+	    			$("input[name=options5]:checked").val(),
+	    			$("input[name=options6]:checked").val(),
+	    			$("input[name=options7]:checked").val(),
+	    			$("input[name=options8]:checked").val(),
+	    			$("input[name=options9]:checked").val(),
+	    			$("input[name=options10]:checked").val()
+	    		]
 	    	};
 
-	    	console.log(personObject);
+	    	// console.log(personObject);
+
+	    	// var url = window.location.origin;
 
 			$.post("/api/friends", personObject).done(function(data) {
 

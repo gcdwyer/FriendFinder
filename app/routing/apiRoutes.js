@@ -10,41 +10,56 @@ module.exports = function(app) {
 
 	});
 
+	var userData = []
 
 	app.post("/api/friends", function(req, res) {
 
 		// Displays at terminal log
-		console.log(req.body);
-	    console.log(req.body.name);
+		var newFriend = req.body;
+		console.log("==================NEW FRIEND========================");
+		console.log(newFriend.name);
+		console.log("==================NEW FRIEND========================");
 
-	    // console.log("friend 1 score: " + friends[0].scores[0]);
-
-	    var difference = 0;
+		var bestMatch = {
+			name: "",
+			photoUrl: "",
+			friendDiff: 100
+		};
 
 	    // loops through all friends
 	    for (var i = 0; i < friends.length; i++) {
 
-	    	// console.log(friends[i]);
+	    	var difference = 0;
+
+	    	console.log("****************FRIENDS LIST**********************");
+	    	console.log(friends[i]);
+	    	console.log("****************FRIENDS LIST**********************");
 
 	    	// loops through each objects score
 	    	for (var j = 0; j < 10; j++) {
 
-	    		// console.log(friends[i].scores[j]);
+	    		difference += Math.abs(friends[i].scores[j] - newFriend.scores[j]);
 
-	    		// console.log(req.body);
-	    		// console.log(req.body.score);
-	    		// console.log(req.body.score[j]);
-
-	    		// difference = Math.abs(friends[i].scores[j] - req.body.scores[j]);
-
-	    		// console.log("Difference: " + difference);
+	    		console.log("Difference: " + difference);
 
 	    	}
 
+		    if (difference <= bestMatch.friendDiff) {
 
+				bestMatch.name = friends[i].name;
+				bestMatch.photoUrl = friends[i].photo;
+				bestMatch.friendDiff = difference;
 
+			}	
 	    }
 
-	});
+	    friends.push(newFriend);
+	    res.json(bestMatch);
 
+	    console.log("==================BEST MATCH===================");
+	    console.log("Best Match: " + bestMatch.name);
+	    console.log("Score Difference: " + bestMatch.friendDiff);
+	    console.log("==================BEST MATCH===================");
+
+	});
 }
