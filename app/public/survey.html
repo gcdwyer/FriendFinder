@@ -42,8 +42,10 @@
 		<h4>Link to Photo Image (optional): </h4>
 		<input type="text" id="photo" class="form-control" required >
 
+		<h2><strong>Please rate the following questions (1 = strongly disagree &amp; 5 = strongly agree):</strong></h2>
+			
 		<h3><strong>Question 1</strong></h3>
-		<h4>TBD</h4>
+		<h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q1">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options1" value="1">1</label>
@@ -54,7 +56,7 @@
 			</div>
 
 		<h3><strong>Question 2</strong></h3>
-		<h4>TBD</h4>
+		<h4>Generally speaking, you rely more on your experience than your imagination.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q2">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options2" value="1">1</label>
@@ -65,7 +67,7 @@
 			</div>
 
 		<h3><strong>Question 3</strong></h3>
-		<h4>TBD</h4>
+		<h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q3">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options3" value="1">1</label>
@@ -76,7 +78,7 @@
 			</div>			
 
 		<h3><strong>Question 4</strong></h3>
-		<h4>TBD</h4>
+		<h4>You rarely do something just out of sheer curiosity.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q4">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options4" value="1">1</label>
@@ -87,7 +89,7 @@
 			</div>
 
 		<h3><strong>Question 5</strong></h3>
-		<h4>TBD</h4>
+		<h4>People can rarely upset you.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q5">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options5" value="1">1</label>
@@ -98,7 +100,7 @@
 			</div>
 
 		<h3><strong>Question 6</strong></h3>
-		<h4>TBD</h4>
+		<h4>It is often difficult for you to relate to other people’s feelings.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q6">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options6" value="1">1</label>
@@ -109,7 +111,7 @@
 			</div>
 
 		<h3><strong>Question 7</strong></h3>
-		<h4>TBD</h4>
+		<h4>In a discussion, truth should be more important than people’s sensitivities</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q7">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options7" value="1">1</label>
@@ -120,7 +122,7 @@
 			</div>
 
 		<h3><strong>Question 8</strong></h3>
-		<h4>TBD</h4>
+		<h4>You rarely get carried away by fantasies and ideas.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q8">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options8" value="1">1</label>
@@ -131,7 +133,7 @@
 			</div>
 
 		<h3><strong>Question 9</strong></h3>
-		<h4>TBD</h4>
+		<h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q9">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options9" value="1">1</label>
@@ -142,7 +144,7 @@
 			</div>
 
 		<h3><strong>Question 10</strong></h3>
-		<h4>TBD</h4>
+		<h4>You feel more energetic after spending time with a group of people.</h4>
 
 			<div class="btn-group" data-toggle="buttons" id="q10">
 				<label class="btn btn-primary radbutton"><input type="radio" name="options10" value="1">1</label>
@@ -176,23 +178,16 @@
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		      </div>
 		    </div>
-
 		  </div>
 		</div>
-
-
 	</div>
 
-
 <script type="text/javascript">
-
-  	
 
     $("#submit").on("click", function(event) {
     	event.preventDefault();
 
     	if ($("#name").val() === "") {
-
     		alert("Name required");
 
     	} else {
@@ -201,23 +196,15 @@
 
     		for (var i = 1; i < 10; i++) {
 
-    			console.log("i: " + i);
-
 	    		if ($("input[name=options" + i + "]:checked").val() == null) {
-
 	    			alert("Please answer question " + i);
 
 	    		} else {
-
-	    			console.log("survey complete");
-
 	    			var temp = $("input[name=options" + i + "]:checked").val()
-
 	    			answerArr.push(temp);
-
 	    		}
     		}
-
+    		// Grab info from survey
 			var personObject = {
 	    		name: $("#name").val().trim(),
 	    		photo: $("#photo").val().trim(),
@@ -240,12 +227,8 @@
 
 	    	// AJAX post
 			$.post(url + "/api/friends", personObject).done(function(data) {
-
-				console.log(data);
-				console.log("data.name: " + data.name);
-				console.log("data.photo: " + data.photo);
-
-				// Grab the result from AJAX post and display in HTML
+				// console.log(data);
+				// Grab the result from AJAX post and display in modal
 				$("#matchName").text(data.name);
 				$("#matchImg").attr("src", data.photoUrl);
 

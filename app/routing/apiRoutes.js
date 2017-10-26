@@ -5,9 +5,7 @@ var friends = require("../data/friends.js");
 module.exports = function(app) {
 
 	app.get("/api/friends", function(req, res) {
-
 	    res.json(friends);
-
 	});
 
 	var userData = []
@@ -39,20 +37,17 @@ module.exports = function(app) {
 	    	for (var j = 0; j < 10; j++) {
 
 	    		difference += Math.abs(friends[i].scores[j] - newFriend.scores[j]);
-
 	    		console.log("Difference: " + difference);
-
 	    	}
 
 		    if (difference <= bestMatch.friendDiff) {
-
+		    	// adds to bestMatch object
 				bestMatch.name = friends[i].name;
 				bestMatch.photoUrl = friends[i].photo;
 				bestMatch.friendDiff = difference;
-
 			}	
 	    }
-
+	    //pushes new friend into friend array
 	    friends.push(newFriend);
 	    res.json(bestMatch);
 
@@ -60,6 +55,5 @@ module.exports = function(app) {
 	    console.log("Best Match: " + bestMatch.name);
 	    console.log("Score Difference: " + bestMatch.friendDiff);
 	    console.log("==================BEST MATCH===================");
-
 	});
 }
